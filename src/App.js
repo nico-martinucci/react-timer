@@ -1,23 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
+import Timer from "./Timer"
+import NotTimer from "./NotTimer"
+import { useState } from 'react';
 
 function App() {
+  const [showTimer, setShowTimer] = useState(true);
+
+  function toggleTimer() {
+    setShowTimer(curr => !curr);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="App">
+      <button id="App.toggle" onClick={toggleTimer}>Toggle</button>
+      {showTimer && <Timer />}
+      {!showTimer && <NotTimer />}
     </div>
   );
 }
